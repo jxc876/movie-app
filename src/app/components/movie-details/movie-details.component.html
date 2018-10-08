@@ -1,0 +1,22 @@
+<h1>Search Movies</h1>
+<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<h1>Results</h1>
+<mat-grid-list cols="4" rowHeight="1:2">
+    <mat-grid-tile
+      *ngFor="let result of searchResults$ | async"
+      [colspan]="1">
+
+      <mat-card class="movie-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{result.Title}} - {{result.Year}}</mat-card-title>
+            <mat-card-subtitle><a href="https://www.imdb.com/title/{{result.imdbID}}/">{{result.imdbID}} </a></mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{result.Poster}}" alt="Photo of a Shiba Inu">
+        </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
+

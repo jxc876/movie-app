@@ -25,7 +25,10 @@ export class MovieService {
 
   // http://www.omdbapi.com/?apikey=164b2adb&s=batman
   searchByTitle(tite: string): Observable<SearchResult[]> {
+    console.log('*****************');
     const SEARCH_URL = `${this.API_URL}&s=${tite}`;
+    console.log('-------------------------------------');
+    console.log(`MovieService.searchByTitle, term: ${tite}`);
     console.log(`MovieService.searchByTitle, URL: ${SEARCH_URL}`);
     return this.http.get<SearchResult[]>(SEARCH_URL)
       .pipe(
